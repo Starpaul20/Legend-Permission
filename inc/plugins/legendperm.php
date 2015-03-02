@@ -146,10 +146,9 @@ function legendperm_run()
 // Remove edited by on posts if option says so
 function legendperm_postbit($post)
 {
-	global $db, $mybb, $fid;
 	if($post['disableeditedby'] == 1)
 	{
-		$post['editedmsg'] = "";
+		$post['editedmsg'] = '';
 	}
 
 	return $post;
@@ -158,7 +157,7 @@ function legendperm_postbit($post)
 // Edit page options
 function legendperm_edit_page()
 {
-	global $db, $mybb, $templates, $lang, $editedby, $disableeditedby;
+	global $mybb, $templates, $lang, $editedby;
 	$lang->load("legendperm");
 
 	$pid = $mybb->get_input('pid', MyBB::INPUT_INT);
@@ -172,7 +171,7 @@ function legendperm_edit_page()
 		}
 		else
 		{
-			$disableeditedby = "";
+			$disableeditedby = '';
 		}
 		eval("\$editedby = \"".$templates->get("editpost_editedby")."\";");
 	}
