@@ -53,9 +53,19 @@ function legendperm_install()
 	global $db, $cache;
 	legendperm_uninstall();
 
-	$db->add_column("usergroups", "canremoveeditedby", "tinyint(1) NOT NULL default '0'");
+	switch($db->type)
+	{
+		case "pgsql":
+			$db->add_column("usergroups", "canremoveeditedby", "smallint NOT NULL default '0'");
 
-	$db->add_column("posts", "disableeditedby", "tinyint(1) NOT NULL default '0'");
+			$db->add_column("posts", "disableeditedby", "smallint NOT NULL default '0'");
+			break;
+		default:
+			$db->add_column("usergroups", "canremoveeditedby", "tinyint(1) NOT NULL default '0'");
+
+			$db->add_column("posts", "disableeditedby", "tinyint(1) NOT NULL default '0'");
+			break;
+	}
 
 	$cache->update_usergroups();
 }
