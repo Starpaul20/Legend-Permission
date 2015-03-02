@@ -138,7 +138,7 @@ function legendperm_run()
 	$edit = get_post($post['pid']);
 
 	$editedby = array(
-		"disableeditedby" => (int)$mybb->input['disableeditedby']
+		"disableeditedby" => $mybb->get_input('disableeditedby', MyBB::INPUT_INT)
 	);
 	$db->update_query("posts", $editedby, "pid='{$edit['pid']}'");
 }
@@ -160,7 +160,9 @@ function legendperm_edit_page()
 {
 	global $db, $mybb, $templates, $lang, $editedby, $disableeditedby;
 	$lang->load("legendperm");
-	$edit = get_post($mybb->input['pid']);
+
+	$pid = $mybb->get_input('pid', MyBB::INPUT_INT);
+	$edit = get_post($pid);
 
 	if($mybb->usergroup['canremoveeditedby'] == 1)
 	{
@@ -193,7 +195,7 @@ function legendperm_usergroup_permission($above)
 function legendperm_usergroup_permission_commit()
 {
 	global $mybb, $updated_group;
-	$updated_group['canremoveeditedby'] = (int)$mybb->input['canremoveeditedby'];
+	$updated_group['canremoveeditedby'] = $mybb->get_input('canremoveeditedby', MyBB::INPUT_INT);
 }
 
 ?>
