@@ -196,5 +196,3 @@ function legendperm_usergroup_permission_commit()
 	global $mybb, $updated_group;
 	$updated_group['canremoveeditedby'] = $mybb->get_input('canremoveeditedby', MyBB::INPUT_INT);
 }
-
-?>
