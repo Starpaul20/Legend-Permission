@@ -1,6 +1,6 @@
 ## INFORMATION ##
 
-Legend Permission (1.1) for MyBB 1.8
+Legend Permission (1.2) for MyBB 1.8
 Created by: Starpaul20
 Copyright: ©2014
 License: GPL
