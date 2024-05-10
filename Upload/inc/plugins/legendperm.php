@@ -186,7 +186,7 @@ function legendperm_usergroup_permission($above)
 	global $mybb, $lang, $form;
 	$lang->load("legendperm", true);
 
-	if($above['title'] == $lang->editing_deleting_options && $lang->editing_deleting_options)
+	if(isset($lang->editing_deleting_options) && $above['title'] == $lang->editing_deleting_options)
 	{
 		$above['content'] .= "<div class=\"group_settings_bit\">".$form->generate_check_box("canremoveeditedby", 1, $lang->can_remove_edited_by, array("checked" => $mybb->input['canremoveeditedby']))."</div>";
 	}
